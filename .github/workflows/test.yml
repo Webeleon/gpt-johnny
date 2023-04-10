@@ -1,0 +1,24 @@
+name: Quality Analysis
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: install
+        run: npm ci
+      - name: test
+        run: npm run test
+      - name: lint
+        run: npm run lint
+      - uses: artiomtr/jest-coverage-report-action@v2
+        with:
+          threshold: 95

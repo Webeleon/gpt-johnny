@@ -1,0 +1,24 @@
+<mjml>
+    <mj-body background-color="#E8F0F2">
+        <mj-section>
+            <mj-column>
+
+                <mj-image width="100px" border-radius="100%" src="https://www.webeleon.com/logo.webp"></mj-image>
+
+                <mj-divider border-color="#246D97"></mj-divider>
+
+                <mj-text align="center" font-size="30px" color="#000" font-family="helvetica">Welcome to NestJs Starter with auth</mj-text>
+                <mj-text align="center" font-size="20px" color="#000" font-family="helvetica">By Webeleon</mj-text>
+
+                <mj-button href="<%=webAppUrl%>/auth/confirm-email/<%=code%>" font-size="16px" background-color="#2F8F9D">
+                    Confirm your email
+                </mj-button>
+                <mj-divider border-color="#246D97"></mj-divider>
+
+                <mj-text align="center" font-size="30px" color="#000" font-family="helvetica">Confirmation code</mj-text>
+                <mj-text align="center" font-size="20px" color="#000" font-family="helvetica"><%=code%></mj-text>
+
+            </mj-column>
+        </mj-section>
+    </mj-body>
+</mjml>
