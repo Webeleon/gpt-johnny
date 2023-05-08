@@ -6,14 +6,13 @@ import { Logger, ValidationPipe } from '@nestjs/common';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import helmet from 'helmet';
 import { json } from 'express';
+import { DiscordClient } from './discord/discord.client';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   // setup swagger
-  const swaggerConfig = new DocumentBuilder()
-    .setTitle('NestJS Starter API')
-    .build();
+  const swaggerConfig = new DocumentBuilder().setTitle('Johnny API').build();
   const document = SwaggerModule.createDocument(app, swaggerConfig);
   SwaggerModule.setup('swagger', app, document);
   Logger.log(`swagger available on /swagger and /swagger-json`, 'MAIN');
@@ -41,5 +40,8 @@ async function bootstrap() {
   const config = app.get<ConfigType<typeof appConfig>>(appConfig.KEY);
   await app.listen(config.port, '0.0.0.0');
   Logger.log(`API started on port ${config.port}`, 'MAIN');
+
+  const discord = app.get<DiscordClient>(DiscordClient);
+  await discord.start();
 }
 bootstrap();
